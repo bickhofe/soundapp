@@ -15,7 +15,7 @@ public class Wurm : MonoBehaviour {
 	bool canMove = false;
 	float velocity = 0;
 	float height = 0;
-	public float groundLevel = 0;
+	public float groundLevel = -30;
 
 	public float gravity = .5f;
 	Vector3 worldPos;
@@ -59,7 +59,7 @@ public class Wurm : MonoBehaviour {
 		}
 
 		//set x & y position
-		targetPos = new Vector3 (worldPos.x, height, 0);
+		targetPos = new Vector3 (worldPos.x, height, -2);
 
 		//worm move
 		for (int i=0; i<4; i++){

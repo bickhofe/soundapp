@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Cloud : MonoBehaviour {
 	
-	float offset = Random.Range(1f,2f);
+	float offset;
 	
 	
 	// Use this for initialization
 	void Start () {
-		
-	}
+        offset = Random.Range(1f, 2f);
+    }
 	
 	// Update is called once per frame
 	void Update () {

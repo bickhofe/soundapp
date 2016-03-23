@@ -4,13 +4,14 @@ using System.Collections;
 public class Note : MonoBehaviour {
 
 	public Main MainScript;
-	float offset = Random.Range(1f,3f);
+	float offset;
 	int id;
 
 
 	// Use this for initialization
 	void Start () {
-		MainScript = GameObject.Find("Main").GetComponent<Main> ();
+        offset = Random.Range(1f, 3f);
+        MainScript = GameObject.Find("Main").GetComponent<Main> ();
 	
 	}
 	

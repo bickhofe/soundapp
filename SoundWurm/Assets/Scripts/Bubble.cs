@@ -5,11 +5,12 @@ public class Bubble : MonoBehaviour {
 
 	public Main MainScript;
 	float bubbleHeight;
-	float offset = Random.Range(1f,1.5f);
+	float offset;
 
 	// Use this for initialization
 	void Start () {
-		MainScript = GameObject.Find ("Main").GetComponent<Main> ();
+        offset = Random.Range(1f, 1.5f);
+        MainScript = GameObject.Find ("Main").GetComponent<Main> ();
 	}
 	
 	// Update is called once per frame
