@@ -100,7 +100,7 @@ PlayerSettings:
   protectGraphicsMemory: 0
   productGUID: 8915e112ace9fb641af348d8fe62606a
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 9
+  AndroidMinSdkVersion: 14
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   apiCompatibilityLevel: 2
@@ -428,10 +428,12 @@ PlayerSettings:
   iOS::EnableIncrementalBuildSupportForIl2cpp: 1
   iOS::ScriptingBackend: 1
   boolPropertyNames:
+  - Android::VR::enable
   - WebGL::analyzeBuildSize
   - WebGL::dataCaching
   - WebGL::useEmbeddedResources
   - XboxOne::enus
+  Android::VR::enable: 0
   WebGL::analyzeBuildSize: 0
   WebGL::dataCaching: 0
   WebGL::useEmbeddedResources: 0
@@ -443,7 +445,10 @@ PlayerSettings:
   WebGL::emscriptenArgs: 
   WebGL::template: APPLICATION:Default
   additionalIl2CppArgs::additionalIl2CppArgs: 
-  vectorPropertyNames: []
+  vectorPropertyNames:
+  - Android::VR::enabledDevices
+  Android::VR::enabledDevices:
+  - Oculus
   cloudProjectId: 
   projectName: 
   organizationId: 
