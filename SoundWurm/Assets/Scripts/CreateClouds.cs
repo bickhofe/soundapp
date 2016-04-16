@@ -18,8 +18,8 @@ public class CreateClouds : MonoBehaviour {
 	
 	void InitClouds(){
 		for (int i = 0; i<MainScript.maxClouds; i++) {
-			GameObject newCloud = Instantiate(Cloud, new Vector3(-6 + i, 0, -1), Quaternion.identity) as GameObject;
-			float scale = Random.Range(.75f,1.25f);
+			GameObject newCloud = Instantiate(Cloud, new Vector3(-7 + i*1.3f, 0, -1), Quaternion.identity) as GameObject;
+			float scale = Random.Range(.5f,1.25f);
 			newCloud.transform.localScale = new Vector3(scale,scale,scale);
 			newCloud.transform.parent = transform; 
 		}

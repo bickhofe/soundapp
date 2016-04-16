@@ -18,7 +18,7 @@ public class CreateBubbles : MonoBehaviour {
 	
 	void InitBubbles(){
 		for (int i = 0; i<maxBubbles; i++) {
-			GameObject newBubble = Instantiate(Bubble, new Vector3(-5 + i*5, 0, 0), Quaternion.identity) as GameObject;
+			GameObject newBubble = Instantiate(Bubble, new Vector3(-5 + i*3, 0, 0), Quaternion.identity) as GameObject;
 			newBubble.transform.parent = transform; 
 		}
 	}

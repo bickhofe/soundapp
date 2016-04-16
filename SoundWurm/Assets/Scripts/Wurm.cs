@@ -7,6 +7,7 @@ public class Wurm : MonoBehaviour {
 	public Main MainScript;
 
 	Vector2 touchPosition;
+	Vector3 mousePosition;
 
 	public float speed = 2f;
 	public float jumpForce = 2f;
@@ -20,35 +21,30 @@ public class Wurm : MonoBehaviour {
 	public float gravity = .5f;
 	Vector3 worldPos;
 	Vector3 targetPos;
-	public GameObject[] Worm;
-	public float[] tailOffset;
 
 	// Use this for initialization
 	void Start () {
-		height = -4;
+		height = groundLevel;
 		velocity = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		//gravity
-		velocity -= gravity;
-		height += velocity;
-
-		if (height < groundLevel) {
-			height = groundLevel;
-			velocity = 0;
-			isJumping = false;
-		}
-
+		
 		// touch control
 		if (MainScript.character == "Worm") {
+			
 			if (Input.touchCount > 0 && !isJumping){
-				touchPosition = Input.GetTouch(0).position;
-				worldPos = Camera.main.ScreenToWorldPoint (new Vector3 (touchPosition.x, 50, 10));
 				isTouching = true;
+				touchPosition = Input.GetTouch(0).position;
+				worldPos = Camera.main.ScreenToWorldPoint (new Vector3 (touchPosition.x, 50, 10));				
 			}
+
+//			if (Input.GetMouseButton(0) && !isJumping){
+//				isTouching = true;
+//				mousePosition = Input.mousePosition;
+//				worldPos = Camera.main.ScreenToWorldPoint (new Vector3 (mousePosition.x, 50, 10));
+//			}
 
 			if (Input.touchCount == 0 && isTouching) {
 				velocity = jumpForce;
@@ -56,15 +52,41 @@ public class Wurm : MonoBehaviour {
 				isTouching = false;
 				MainScript.character = "";
 			}
-		}
 
-		//set x & y position
-		targetPos = new Vector3 (worldPos.x, height, -2);
-
-		//worm move
-		for (int i=0; i<4; i++){
-			Worm[i].transform.position = Vector3.MoveTowards(Worm[i].transform.position, targetPos, tailOffset[i]);
+//			if (Input.GetMouseButtonUp(0)) {
+//				velocity = jumpForce;
+//				isJumping = true;
+//				isTouching = false;
+//				MainScript.character = "";
+//			}
 		}
+			
+		if (!isJumping) {
+			targetPos = new Vector3 (worldPos.x, height, -2);
+			// set horizontal worm position (move)
+			float step = speed * Time.deltaTime;
+			transform.position = Vector3.MoveTowards (transform.position, targetPos, step);
+		} else {
+			//gravity
+			print (height);
+			velocity -= gravity;
+			height += velocity;
+
+			// gelandet
+			if (height < groundLevel) {
+				height = groundLevel;
+				velocity = 0;
+				isJumping = false;
+			}
+
+			// set vertical worm position
+			targetPos = new Vector3(transform.position.x,height,-2);
+			transform.position = targetPos;
+		}
+			
+		//flip worm
+		if (targetPos.x < transform.position.x) transform.localScale = new Vector3(-1,1,1);
+		else transform.localScale = new Vector3(1,1,1);
 	}
 }
 

@@ -11,7 +11,7 @@ public class Main : MonoBehaviour {
 	public Text Text;
 	public int noteScore;
 	public int cloudScore;
-	public int maxClouds = 15;
+	public int maxClouds = 10;
 	public int noteAmmo;
 	public int bubbleCount;
 	public GameObject[] instruments;
@@ -26,7 +26,8 @@ public class Main : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.Escape)){
-			Application.Quit();
+			//Application.Quit();
+			Application.LoadLevel("CloudShooter");
 		}
 
 		//touch

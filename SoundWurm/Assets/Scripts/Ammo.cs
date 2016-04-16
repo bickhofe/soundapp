@@ -12,7 +12,7 @@ public class Ammo : MonoBehaviour {
 	void Start () {
 		MainScript = GameObject.Find ("Main").GetComponent<Main> ();
 		rb = GetComponent<Rigidbody2D>();
-		SpeakerScript = GameObject.Find ("speaker").GetComponent<Speaker> ();
+		SpeakerScript = GameObject.Find ("Speaker").GetComponent<Speaker> ();
 		transform.rotation = Quaternion.Euler(new Vector3(0,0,SpeakerScript.rotAngle-90));
 		rb.AddForce(transform.up * power);
 

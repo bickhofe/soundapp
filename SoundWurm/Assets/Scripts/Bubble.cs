@@ -16,7 +16,7 @@ public class Bubble : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//hover
-		if (MainScript.gamePhase == 0) bubbleHeight = 3;
+		if (MainScript.gamePhase == 0) bubbleHeight = 2.5f;
 		else if (MainScript.gamePhase == 1 && bubbleHeight > 0) bubbleHeight -= 0.01f;
 		transform.position = new Vector3(transform.position.x, Mathf.PingPong(Time.time,offset)+bubbleHeight, transform.position.z);
 	}
@@ -24,7 +24,7 @@ public class Bubble : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		Debug.Log("hit");
 		if (other.gameObject.tag == "Worm") {
-			Instantiate(MainScript.instruments[MainScript.bubbleCount], transform.position, Quaternion.Euler(new Vector3 (0,0,Random.Range(0,360))));
+			Instantiate(MainScript.instruments[MainScript.bubbleCount], transform.position, Quaternion.identity);
 			Destroy(gameObject);
 			MainScript.bubbleCount++;
 		}
